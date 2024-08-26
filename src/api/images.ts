@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Image } from "../components/types";
 
 const accessKey = import.meta.env.VITE_unsplash_api;
 
@@ -8,13 +9,6 @@ axios.defaults.headers.common = {
   "Accept-Version": "v1",
 };
 const perPage = 12;
-
-type Image = {
-  user: string;
-  urls: { [key: string]: string };
-  description: string;
-  likes: number;
-};
 
 type GetImagesResponse = {
   images: Image[];

@@ -1,3 +1,4 @@
+import "./App.css";
 import { useEffect, useState, useRef } from "react";
 import SearchBar from "./SearchBar/SearchBar";
 import getImages from "../api/images";
@@ -6,14 +7,7 @@ import ErrorMessage from "./ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "./LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./ImageModal/ImageModal";
 import Loader from "./Loader/Loader";
-import "./App.css";
-
-type Image = {
-  user: string;
-  urls: { [key: string]: string };
-  description: string;
-  likes: number;
-};
+import { Image } from "./types";
 
 type Modal = {
   isShown: boolean;
