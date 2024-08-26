@@ -8,16 +8,31 @@ import ImageModal from "./ImageModal/ImageModal";
 import Loader from "./Loader/Loader";
 import "./App.css";
 
+type Image = {
+  user: string;
+  urls: { [key: string]: string };
+  description: string;
+  likes: number;
+};
+
+type Modal = {
+  isShown: boolean;
+  url: string;
+  alt: string;
+  author: string;
+  likes: string | number;
+};
+
 export default function App() {
-  const galleryRef = useRef(null);
-  const [images, setImages] = useState([]);
-  const [query, setQuery] = useState("");
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [hasSearched, setHasSearched] = useState(false);
-  const [modalData, setModalData] = useState({
+  const galleryRef = useRef<HTMLUListElement>(null);
+  const [images, setImages] = useState<Image[]>([]);
+  const [query, setQuery] = useState<string>("");
+  const [page, setPage] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [hasSearched, setHasSearched] = useState<boolean>(false);
+  const [modalData, setModalData] = useState<Modal>({
     isShown: false,
     url: "",
     alt: "",
@@ -25,7 +40,7 @@ export default function App() {
     likes: "",
   });
 
-  const handleSearch = newQuery => {
+  const handleSearch = (newQuery: string): void => {
     setIsError(false);
     setQuery(newQuery);
     setImages([]);
@@ -37,7 +52,12 @@ export default function App() {
     setPage(prev => prev + 1);
   };
 
-  const openModal = (url, alt, author, likes) => {
+  const openModal = (
+    url: string,
+    alt: string,
+    author: string,
+    likes: string | number
+  ) => {
     setModalData({
       isShown: true,
       url,
@@ -62,17 +82,17 @@ export default function App() {
       return;
     }
 
-    const fetchImages = async () => {
+    const fetchImages = async (): Promise<void> => {
       try {
         setIsError(false);
         setIsLoading(true);
         const { images, totalPages } = await getImages(query, page);
-        setImages(prevImages => {
+        setImages((prevImages: Image[]) => {
           return [...prevImages, ...images];
         });
         setTotalPages(totalPages);
         setHasSearched(true);
-      } catch (error) {
+      } catch (error: unknown) {
         setIsError(true);
       } finally {
         setIsLoading(false);
@@ -88,6 +108,7 @@ export default function App() {
       }
     };
     fetchImages();
+    console.log(images);
   }, [query, page]);
 
   return (

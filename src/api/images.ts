@@ -8,7 +8,23 @@ axios.defaults.headers.common = {
   "Accept-Version": "v1",
 };
 const perPage = 12;
-export default async function getImages(query, page) {
+
+type Image = {
+  user: string;
+  urls: { [key: string]: string };
+  description: string;
+  likes: number;
+};
+
+type GetImagesResponse = {
+  images: Image[];
+  totalPages: number;
+};
+
+export default async function getImages(
+  query: string,
+  page: number
+): Promise<GetImagesResponse> {
   const response = await axios.get("/search/photos", {
     params: {
       query,
