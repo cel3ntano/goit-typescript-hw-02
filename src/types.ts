@@ -16,3 +16,5 @@ export type OpenModal = (
 ) => void;
 
 export type modalClose = () => void;
+
+export type LoadMore = () => void;

@@ -7,7 +7,7 @@ import ErrorMessage from "./ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "./LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./ImageModal/ImageModal";
 import Loader from "./Loader/Loader";
-import { Image, OpenModal } from "../types";
+import { Image, LoadMore, OpenModal } from "../types";
 
 type Modal = {
   isShown: boolean;
@@ -42,7 +42,7 @@ export default function App(): React.ReactElement {
     setHasSearched(false);
   };
 
-  const handleLoadMore = () => {
+  const handleLoadMore: LoadMore = () => {
     setPage(prev => prev + 1);
   };
 
