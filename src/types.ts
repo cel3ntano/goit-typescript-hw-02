@@ -14,3 +14,5 @@ export type OpenModal = (
   author: string,
   likes: string | number
 ) => void;
+
+export type modalClose = () => void;

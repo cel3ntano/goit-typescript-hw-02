@@ -2,7 +2,17 @@ import css from "./ImageModal.module.css";
 import Modal from "react-modal";
 import { FaHeart } from "react-icons/fa";
 import { MdPhotoCamera } from "react-icons/md";
+import { modalClose } from "../../types";
 Modal.setAppElement("#root");
+
+interface ImageModalProps {
+  isOpen: boolean;
+  onCloseModal: modalClose;
+  modalSrc: string;
+  modalAlt: string;
+  modalAuthor: string;
+  modalLikes: string | number;
+}
 
 export default function ImageModal({
   isOpen,
@@ -11,7 +21,7 @@ export default function ImageModal({
   modalAlt,
   modalAuthor,
   modalLikes,
-}) {
+}: ImageModalProps): JSX.Element {
   return (
     <Modal
       className={css.modal}
