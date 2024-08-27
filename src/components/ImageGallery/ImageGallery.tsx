@@ -8,7 +8,7 @@ type ImageGalleryProps = {
   openModal: OpenModal;
 };
 
-const ImageGallery: React.FC<ImageGalleryProps> = forwardRef(
+const ImageGallery = forwardRef<HTMLUListElement, ImageGalleryProps>(
   function ImageGallery({ images, openModal }, ref) {
     return (
       <ul className={css.gallery} ref={ref}>

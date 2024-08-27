@@ -1,6 +1,9 @@
 export type Image = {
-  user: string;
-  urls: { [key: string]: string };
+  user: { name: string };
+  urls: {
+    regular: string;
+    small: string;
+  };
   description: string;
   likes: number;
 };

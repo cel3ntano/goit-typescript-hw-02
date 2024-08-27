@@ -1,4 +1,18 @@
+import { OpenModal } from "../../types";
 import css from "./ImageCard.module.css";
+
+interface ImageCardProps {
+  user: {
+    name: string;
+  };
+  urls: {
+    regular: string;
+    small: string;
+  };
+  description: string;
+  likes: string | number;
+  openModal: OpenModal;
+}
 
 export default function ImageCard({
   user: { name: userName },
@@ -6,8 +20,8 @@ export default function ImageCard({
   description,
   likes,
   openModal,
-}) {
-  const handleOpenModal = () => {
+}: ImageCardProps): JSX.Element {
+  const handleOpenModal = (): void => {
     openModal(modalUrl, description, userName, likes);
   };
 

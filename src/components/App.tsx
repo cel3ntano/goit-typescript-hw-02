@@ -17,7 +17,7 @@ type Modal = {
   likes: string | number;
 };
 
-export default function App() {
+export default function App(): React.ReactElement {
   const galleryRef = useRef<HTMLUListElement>(null);
   const [images, setImages] = useState<Image[]>([]);
   const [query, setQuery] = useState<string>("");
@@ -99,6 +99,7 @@ export default function App() {
     fetchImages();
     console.log(images);
   }, [query, page]);
+  console.log(images);
 
   return (
     <>
