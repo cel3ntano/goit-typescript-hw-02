@@ -1,6 +1,13 @@
 import css from "./ErrorMessage.module.css";
+import { ReactNode } from "react";
 
-export default function ErrorMessage({ children }) {
+interface ErrorMessageProps {
+  children: ReactNode;
+}
+
+export default function ErrorMessage({
+  children,
+}: ErrorMessageProps): JSX.Element {
   return (
     <>
       <p className={css.errorMessage}>{children}</p>
