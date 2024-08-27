@@ -7,7 +7,7 @@ import ErrorMessage from "./ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "./LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./ImageModal/ImageModal";
 import Loader from "./Loader/Loader";
-import { Image } from "./types";
+import { Image, OpenModal } from "../types";
 
 type Modal = {
   isShown: boolean;
@@ -46,12 +46,7 @@ export default function App() {
     setPage(prev => prev + 1);
   };
 
-  const openModal = (
-    url: string,
-    alt: string,
-    author: string,
-    likes: string | number
-  ) => {
+  const openModal: OpenModal = (url, alt, author, likes) => {
     setModalData({
       isShown: true,
       url,

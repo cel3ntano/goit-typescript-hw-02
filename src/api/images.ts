@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Image } from "../components/types";
+import { Image } from "../types";
 
 const accessKey = import.meta.env.VITE_unsplash_api;
 
