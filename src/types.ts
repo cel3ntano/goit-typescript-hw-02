@@ -18,3 +18,5 @@ export type OpenModal = (
 export type modalClose = () => void;
 
 export type LoadMore = () => void;
+
+export type handleSearch = (newQuery: string) => void;

@@ -7,7 +7,7 @@ import ErrorMessage from "./ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "./LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./ImageModal/ImageModal";
 import Loader from "./Loader/Loader";
-import { Image, LoadMore, OpenModal } from "../types";
+import { handleSearch, Image, LoadMore, OpenModal } from "../types";
 
 type Modal = {
   isShown: boolean;
@@ -34,7 +34,7 @@ export default function App(): React.ReactElement {
     likes: "",
   });
 
-  const handleSearch = (newQuery: string): void => {
+  const handleSearch: handleSearch = newQuery => {
     setIsError(false);
     setQuery(newQuery);
     setImages([]);
@@ -99,7 +99,6 @@ export default function App(): React.ReactElement {
     fetchImages();
     console.log(images);
   }, [query, page]);
-  console.log(images);
 
   return (
     <>

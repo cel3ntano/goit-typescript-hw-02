@@ -1,11 +1,20 @@
 import css from "./SearchBar.module.css";
 import { CiSearch } from "react-icons/ci";
 import toast, { Toaster } from "react-hot-toast";
+import { handleSearch } from "../../types";
+import { FormEvent } from "react";
 
-export default function SearchBar({ handleSearch }) {
-  const handleSubmit = e => {
+interface SearchBarProps {
+  handleSearch: handleSearch;
+}
+
+export default function SearchBar({ handleSearch }: SearchBarProps) {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const query = e.target.elements.search.value.trim();
+    // const query = e.currentTarget.elements.search.value.trim();
+    const query = (
+      e.currentTarget.elements.namedItem("search") as HTMLInputElement
+    ).value.trim();
     const notify = () =>
       toast.error("Please enter a search query", {
         duration: 2000,
@@ -16,7 +25,7 @@ export default function SearchBar({ handleSearch }) {
     }
 
     handleSearch(query);
-    e.target.reset();
+    e.currentTarget.reset();
   };
 
   return (
