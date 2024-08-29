@@ -97,7 +97,6 @@ export default function App(): React.ReactElement {
       }
     };
     fetchImages();
-    console.log(images);
   }, [query, page]);
 
   return (
