@@ -1,4 +1,5 @@
 export type Image = {
+  id: string;
   user: { name: string };
   urls: {
     regular: string;
